@@ -15,7 +15,7 @@ def index(request):
         "Education":'/education/',
         "Tools":'/tools/',
         "Portfolio":'/portfolio/',
-        "Contact Me":'/contact-Me/',
+        "Contact Me":'/contactme/',
     }
     return Response(api_urls)
 
