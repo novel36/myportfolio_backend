@@ -25,10 +25,22 @@ def aboutMe(request):
     serializer=AboutMeSerializer(aboutMe, many=True)
     return Response(serializer.data)
 
+# @api_view(['GET'])
+# def skills(request):
+#     skills=Skills.objects.all()
+#     serializer=SkillsSerializer(skills, many=True)
+#     return Response(serializer.data)
+
 @api_view(['GET'])
-def skills(request):
-    skills=Skills.objects.all()
-    serializer=SkillsSerializer(skills, many=True)
+def personalSkills(request):
+    personalskills=PersonalSkill.objects.all()
+    serializer=PersonalSkillSerializer(personalskills, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def professionalSkills(request):
+    professionalskills=ProfessionalSkill.objects.all()
+    serializer=ProfessionalSkillSerializer(professionalskills, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -49,7 +61,7 @@ def portfolio(request):
     serializer=PortfolioSerializer(portfolio, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def contactMe(request):
     contactMe=ContactMe.objects.all()
     serializer=ContactMeSerializer(contactMe, many=True)
