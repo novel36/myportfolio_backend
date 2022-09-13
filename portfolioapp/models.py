@@ -37,7 +37,7 @@ class SocialmediaLinks(models.Model):
 class AboutME(models.Model):
     name=models.CharField(max_length=50)
     mySkill=models.ForeignKey(MySkill,on_delete=models.CASCADE)
-    socialmediaLinks=models.ForeignKey(SocialmediaLinks,on_delete=models.CASCADE)
+    socialmediaLinks=models.ForeignKey(SocialmediaLinks,on_delete=models.DO_NOTHING)
     photo1=models.ImageField()
     photo2=models.ImageField()
 
@@ -68,8 +68,8 @@ class ProfessionalSkill(models.Model):
         return self.skillname
 
 class Skills(models.Model):
-    professionalSkill=models.ForeignKey(ProfessionalSkill,on_delete=models.CASCADE)
-    personalSkill=models.ForeignKey(PersonalSkill,on_delete=models.CASCADE)
+    professionalSkill=models.ForeignKey(ProfessionalSkill,on_delete=models.DO_NOTHING)
+    personalSkill=models.ForeignKey(PersonalSkill,on_delete=models.DO_NOTHING)
     name=models.CharField(max_length=150)
 
     class Meta:
