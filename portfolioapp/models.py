@@ -12,9 +12,6 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
-
-
-
 class MySkill(models.Model):
     skillname=models.CharField(max_length=100)
 
@@ -36,8 +33,9 @@ class SocialmediaLinks(models.Model):
 
 class AboutME(models.Model):
     name=models.CharField(max_length=50)
-    mySkill=models.ForeignKey(MySkill,on_delete=models.CASCADE)
+    mySkill=models.ForeignKey(MySkill,on_delete=models.DO_NOTHING)
     socialmediaLinks=models.ForeignKey(SocialmediaLinks,on_delete=models.DO_NOTHING)
+    description=models.CharField(max_length=2000,default="")
     photo1=models.ImageField()
     photo2=models.ImageField()
 
