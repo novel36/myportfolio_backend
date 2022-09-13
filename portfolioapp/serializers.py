@@ -2,17 +2,13 @@ from dataclasses import fields
 from rest_framework import serializers
 from .models import Task,Skills,AboutME,ContactMe,Education,MySkill,PersonalSkill,Portfolio,ProfessionalSkill,SocialmediaLinks,Tools
 
-class TaskSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= Task
-        fields='__all__'
 
 class SkillsSerializer(serializers.ModelSerializer):
     class Meta:
         model= Skills
         fields='__all__'
 
-class AboutMESerializer(serializers.ModelSerializer):
+class AboutMeSerializer(serializers.ModelSerializer):
     class Meta:
         model= AboutME
         fields='__all__'
