@@ -109,6 +109,7 @@ class Tools(models.Model):
 
 class ContactMe(models.Model):
     firstname=models.CharField(max_length=300)
+    lastname=models.CharField(max_length=300)
     lasname=models.CharField(max_length=300)
 
     class Meta:
