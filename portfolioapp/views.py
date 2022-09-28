@@ -14,7 +14,10 @@ def index(request):
         "Education":'/education/',
         "Tools":'/tools/',
         "Portfolio":'/portfolio/',
-        "Contact Me":'/contactme/',
+        "Contact Me":'/contact-me/',
+        "Personal Skills":'/personal-skills/',
+        "Professional Skills":'/professional-skills/',
+        "SocialMedia Links":'/socialmedia-links/',
     }
     return Response(api_urls)
 
@@ -55,9 +58,17 @@ def portfolio(request):
     portfolio=Portfolio.objects.all()
     serializer=PortfolioSerializer(portfolio, many=True)
     return Response(serializer.data)
+@api_view(['GET'])
+def socialmediaLinks(request):
+    socialMediaLink=SocialmediaLinks.objects.all()
+    serializer=SocialmediaLinksSerializer(socialMediaLink, many=True)
+    return Response(serializer.data)
 
 @api_view(['POST'])
 def contactMe(request):
-    contactMe=ContactMe.objects.all()
-    serializer=ContactMeSerializer(contactMe, many=True)
+    serializer=ContactMeSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    # contactMe=ContactMe.objects.all()
+    # serializer=ContactMeSerializer(contactMe, many=True)
     return Response(serializer.data)

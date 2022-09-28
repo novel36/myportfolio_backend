@@ -111,11 +111,10 @@ class ContactMe(models.Model):
     firstname=models.CharField(max_length=300)
     lastname=models.CharField(max_length=300)
     email=models.EmailField(max_length=70,blank=True,unique=True)
-    message=models.TextField()
+    message=models.TextField(default='')
 
     class Meta:
         verbose_name_plural = "ContactMe"
 
     def __str__(self):
         return self.firstname
-
