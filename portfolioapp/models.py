@@ -18,8 +18,8 @@ class Task(models.Model):
 class AboutME(models.Model):
     name=models.CharField(max_length=50)
     description=models.CharField(max_length=2000,default="")
-    photo1=models.ImageField()
-    photo2=models.ImageField()
+    photo1=models.ImageField(upload_to="ProfileImages",)
+    photo2=models.ImageField(upload_to="ProfileImages",)
 
     class Meta:
         verbose_name_plural = "AboutME"
@@ -87,7 +87,7 @@ class Education(models.Model):
 class Portfolio(models.Model):
     project_title=models.CharField(max_length=150)
     project_type=models.CharField(max_length=150)
-    project_images=models.CharField(max_length=150)
+    project_images=models.ImageField(upload_to="PortfolioImages",)
     project_link=models.CharField(max_length=150)
 
     class Meta:
