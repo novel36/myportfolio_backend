@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from portfolioapp.models import Task,AboutME,Skills,Education,Tools,Portfolio,ContactMe
+from portfolioapp.models import Task,AboutME,Education,Tools,Portfolio,ContactMe
 from .serializers import *
 from .models import Task
 
@@ -11,7 +11,6 @@ from .models import Task
 def index(request):
     api_urls={
         "About Me":'/about-me/',
-        "Skills":'/skills/',
         "Education":'/education/',
         "Tools":'/tools/',
         "Portfolio":'/portfolio/',
@@ -25,11 +24,7 @@ def aboutMe(request):
     serializer=AboutMeSerializer(aboutMe, many=True)
     return Response(serializer.data)
 
-# @api_view(['GET'])
-# def skills(request):
-#     skills=Skills.objects.all()
-#     serializer=SkillsSerializer(skills, many=True)
-#     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def personalSkills(request):

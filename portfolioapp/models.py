@@ -1,3 +1,4 @@
+
 from django.db import models
 
 
@@ -12,29 +13,10 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
-class MySkill(models.Model):
-    skillname=models.CharField(max_length=100)
 
-    class Meta:
-        verbose_name_plural = "MySkills"
-
-    def __str__(self):
-        return self.skillname
-
-class SocialmediaLinks(models.Model):
-    socialMediaName=models.CharField(max_length=150)
-    link=models.CharField(max_length=500)
-
-    class Meta:
-        verbose_name_plural = "SocialmediaLinks"
-
-    def __str__(self):
-        return self.socialMediaName
 
 class AboutME(models.Model):
     name=models.CharField(max_length=50)
-    mySkill=models.ForeignKey(MySkill,on_delete=models.DO_NOTHING)
-    socialmediaLinks=models.ForeignKey(SocialmediaLinks,on_delete=models.DO_NOTHING)
     description=models.CharField(max_length=2000,default="")
     photo1=models.ImageField()
     photo2=models.ImageField()
@@ -45,6 +27,28 @@ class AboutME(models.Model):
     def __str__(self):
         return self.name
 
+class MySkill(models.Model):
+    skillname=models.CharField(max_length=100)
+    aboutme= models.ForeignKey(AboutME, on_delete=models.CASCADE,null=True)
+    class Meta:
+        verbose_name_plural = "MySkills"
+
+    def __str__(self):
+        return self.skillname
+
+class SocialmediaLinks(models.Model):
+    socialMediaName=models.CharField(max_length=150)
+    link=models.CharField(max_length=500)
+    aboutme= models.ForeignKey(AboutME, on_delete=models.CASCADE,null=True)
+
+
+    class Meta:
+        verbose_name_plural = "SocialmediaLinks"
+
+    def __str__(self):
+        return self.socialMediaName
+
+
 class PersonalSkill(models.Model):
     skillname=models.CharField(max_length=700)
     skill_in_percent=models.IntegerField()
@@ -54,6 +58,7 @@ class PersonalSkill(models.Model):
 
     def __str__(self):
         return self.skillname
+
 class ProfessionalSkill(models.Model):
     skillname=models.CharField(max_length=700)
     skill_in_percent=models.IntegerField()
@@ -65,16 +70,7 @@ class ProfessionalSkill(models.Model):
     def __str__(self):
         return self.skillname
 
-class Skills(models.Model):
-    professionalSkill=models.ForeignKey(ProfessionalSkill,on_delete=models.DO_NOTHING)
-    personalSkill=models.ForeignKey(PersonalSkill,on_delete=models.DO_NOTHING)
-    name=models.CharField(max_length=150)
 
-    class Meta:
-        verbose_name_plural = "Skills"
-
-    def __str__(self):
-        return self.name
 
 class Education(models.Model):
     schoolName=models.CharField(max_length=500)
@@ -120,3 +116,4 @@ class ContactMe(models.Model):
 
     def __str__(self):
         return self.firstname
+
