@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_(#29e*_rgpt*1%05rrmqfdp#wk#zb6w_xd*2+*yucad6pbn3k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['novel.up.railway.app']
 
@@ -105,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 CSRF_TRUSTED_ORIGINS=['novel.up.railway.app']
 
 
