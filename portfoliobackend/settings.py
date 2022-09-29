@@ -107,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CSRF_TRUSTED_ORIGINS=['novel.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['http://novel.up.railway.app']
 
 
 # Internationalization
