@@ -5,9 +5,11 @@ from .models import Task,AboutME,ContactMe,Education,MySkill,PersonalSkill,Portf
 
 
 class AboutMeSerializer(serializers.ModelSerializer):
+    myskills=serializers.StringRelatedField(many=True)
+    mysoicialmedialinks=serializers.StringRelatedField(many=True)
     class Meta:
         model= AboutME
-        fields='__all__'
+        fields=['name','description','photo1','photo2','mysoicialmedialinks','myskills']
 
 class ContactMeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,6 +17,7 @@ class ContactMeSerializer(serializers.ModelSerializer):
         fields='__all__'
 
 class MySkillSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model= MySkill
         fields='__all__'

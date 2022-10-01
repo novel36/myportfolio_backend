@@ -29,7 +29,7 @@ class AboutME(models.Model):
 
 class MySkill(models.Model):
     skillname=models.CharField(max_length=100)
-    aboutme= models.ForeignKey(AboutME, on_delete=models.CASCADE,null=True)
+    aboutme= models.ForeignKey(AboutME,related_name='myskills', on_delete=models.CASCADE,null=True)
     class Meta:
         verbose_name_plural = "MySkills"
 
@@ -39,7 +39,7 @@ class MySkill(models.Model):
 class SocialmediaLinks(models.Model):
     socialMediaName=models.CharField(max_length=150)
     link=models.CharField(max_length=500)
-    aboutme= models.ForeignKey(AboutME, on_delete=models.CASCADE,null=True)
+    aboutme= models.ForeignKey(AboutME,related_name='mysoicialmedialinks', on_delete=models.CASCADE,null=True)
 
 
     class Meta:
